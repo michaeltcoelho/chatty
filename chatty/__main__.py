@@ -1,5 +1,3 @@
-import os.path
-
 from asyncio import get_event_loop
 from jinja2 import FileSystemLoader
 
@@ -8,7 +6,7 @@ from aioredis import create_redis
 from aiohttp_jinja2 import setup as setup_jinja2
 
 from chatty.routes import routes
-from chatty.settings import BASE_DIR
+from chatty.settings import BASE_DIR, TEMPLATES_DIR
 from chatty.auth.middlewares import token_based_auth_middleware
 
 
@@ -17,7 +15,7 @@ async def create_app():
         token_based_auth_middleware,
     ])
     app.redis = await create_redis(('localhost', 6379))
-    setup_jinja2(app, loader=FileSystemLoader(os.path.join(BASE_DIR, 'templates')))
+    setup_jinja2(app, loader=FileSystemLoader(TEMPLATES_DIR))
     for (method, path, handler, name) in routes:
         app.router.add_route(method, path, handler, name=name)
     return app
