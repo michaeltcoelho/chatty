@@ -9,5 +9,7 @@ TOKEN_KEY = 'tokens:{uuid}'
 TOKEN_TTL = 60 * 60 * 24
 
 PUBLIC_ROOM_KEY = 'rooms:public'
-USER_PRIVATE_KEY = 'private:{username}'
+USER_PRIVATE_KEY = 'users:{name}:private'
 USERS_ONLINE_KEY = 'users:online'
+
+REDIS_HOST = ('localhost', 6379)
