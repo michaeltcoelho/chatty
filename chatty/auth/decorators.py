@@ -8,3 +8,10 @@ def login_required(handler):
     '''
     handler.login_required = True
     return handler
+
+def anonymous_required(handler):
+    '''
+    Marks handler as anonymous-only.
+    '''
+    handler.anonymous_required = True
+    return handler
