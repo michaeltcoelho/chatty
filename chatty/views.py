@@ -15,7 +15,7 @@ from chatty.settings import (
     USERS_ONLINE_KEY,
 )
 from chatty.auth.decorators import login_required
-from chatty.auth.utils import is_valid_token
+from chatty.auth.utils import is_valid_token, is_user_exists
 
 
 class Message(IntEnum):
@@ -58,13 +58,14 @@ class ChatroomView(web.View):
                             ])
                             self.request.connection = connection
                             await self.on_join()
-                    else:
-                        response = json.dumps({
-                            'type': Message.ERROR,
-                            'message': 'Invalid token',
-                        })
-                        connection.send_str(response)
-                        await connection.close()
+                            continue
+                    response = json.dumps({
+                        'type': Message.ERROR,
+                        'message': 'Invalid token',
+                    })
+                    connection.send_str(response)
+                    await connection.close()
+                    return connection
                 else:
                     if not message_type:
                         response = json.dumps({
@@ -104,7 +105,7 @@ class ChatroomView(web.View):
                     'message': 'Invalid request',
                 })
                 self.request.connection.send_str(response)
-            user_exists = await self.request.app.redis.get(USER_KEY.format(name=username))
+            user_exists = await is_user_exists(self.request.app.redis, username)
             if user_exists:
                 channel = USER_PRIVATE_KEY.format(name=username)
                 await self.request.app.redis.publish_json(channel, message)
