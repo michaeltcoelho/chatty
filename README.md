@@ -2,6 +2,8 @@
 
 aiohttp-powered chat app with auth & private support.
 
+![](http://i.imgur.com/3qm4Aj4.gifv)
+
 ```bash
 $ pip install -r requirements.txt
 $ python -m chatty
