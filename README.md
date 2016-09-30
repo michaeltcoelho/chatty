@@ -2,7 +2,7 @@
 
 aiohttp-powered chat app with auth & private support.
 
-![](http://i.imgur.com/3qm4Aj4.gifv)
+![preview](https://i.imgur.com/3qm4Aj4.gif)
 
 ```bash
 $ pip install -r requirements.txt
