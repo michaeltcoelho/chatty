@@ -1,0 +1,19 @@
+.hidden {
+    display: none;
+}
+
+.chat-visible {
+    display: flex;
+}
+
+#chat {
+    justify-content: space-between;
+}
+
+.chat-left-panel {
+    flex: 2;
+}
+
+.chat-right-panel {
+    flex: 1;
+}

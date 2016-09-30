@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% block body %}
+{% if form %}
+<form action="/login/" method="POST">
+    {% for field in form %}
+    <div>{{ field.label }}: {{ field() }}</div>
+    {% if field.errors %}
+    <ul class="errors">{% for error in field.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+    {% endif %}
+    {% endfor %}
+    <input type="submit" value="Submit">
+</form>
+{% elif token %}
+<div>
+    <h1>Success!</h1>
+    <p>Your access token is: {{ token }}</p>
+    <p>And now you can <a href='/'>join chat</a></p>
+</div>
+{% endif %}
+{% endblock %}

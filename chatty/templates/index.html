@@ -3,8 +3,40 @@
 <head>
     <title>Chatty</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
 </head>
 <body>
+{% block body %}
+<div id="login">
+    <input type="password" id="access-token" placeholder="Enter your access token">
+    <input type="submit" id="join-chat" value="Join">
+    <ul>
+        <li>
+            <a href="/login/">Login</a>
+        </li>
+        <li>
+            <a href="/register/">Register</a>
+        </li>
+    </ul>
+</div>
+<div id="chat" class="hidden">
+    <div class="chat-left-panel">
+        <div id="messages">
+            <p>Private message must starts with <b>@</b>, like: "@JonSnow i see you"</p>
+        </div>
+        <div>
+            <input type="text" id="message-text" name="Enter your message">
+            <input type="submit" id="send-message" value="Send">
+        </div>
+    </div>
+    <div class="chat-right-panel">
+        <p>People in chat</p>
+        <ul id="users">
+            
+        </ul>
+    </div>
+</div>
 <script type="text/javascript" src="/static/js/main.js"></script>
+{% endblock %}
 </body>
 </html>
