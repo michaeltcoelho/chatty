@@ -1,0 +1,4 @@
+aiohttp==1.0.2
+aiohttp-jinja2==0.8.0
+aioredis==0.2.8
+WTForms==2.1
