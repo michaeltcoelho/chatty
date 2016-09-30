@@ -7,6 +7,7 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 USER_KEY = 'users:{name}'
 TOKEN_KEY = 'tokens:{uuid}'
 TOKEN_TTL = 60 * 60 * 24
+SECRET_KEY = b'very-secret-much-hidden'
 
 PUBLIC_ROOM_KEY = 'rooms:public'
 USER_PRIVATE_KEY = 'users:{name}:private'
